@@ -8,23 +8,19 @@ import com.google.sitebricks.SitebricksServletModule;
 import lt.brick1.util.LoggerOfHttpSessionSize;
 
 public class AppStartupListener extends GuiceServletContextListener {
-    @Override
-    public Injector getInjector() {
-        return Guice.createInjector(new SitebricksModule() {
-            @Override
-            protected void configureSitebricks() {
-                at("/").show(HomePage.class);
-            }
+  @Override public Injector getInjector() {
+    return Guice.createInjector(new SitebricksModule() {
+      @Override protected void configureSitebricks() {
+        at("/").show(HomePage.class);
+      }
 
-            @Override
-            protected SitebricksServletModule servletModule() {
-                return new SitebricksServletModule() {
-                    @Override
-                    protected void configurePreFilters() {
-                        filter("/*").through(new LoggerOfHttpSessionSize());
-                    }
-                };
-            }
-        });
-    }
+      @Override protected SitebricksServletModule servletModule() {
+        return new SitebricksServletModule() {
+          @Override protected void configurePreFilters() {
+            filter("/*").through(new LoggerOfHttpSessionSize());
+          }
+        };
+      }
+    });
+  }
 }

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-        @ShowIf(true)
-        <p>${message} from Sitebricks 123! [ąčęė]</p>
-    </body>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <p>${message} from Sitebricks 123!</p>
+    <ul>
+      @Repeat(items=chebra, var="chebras")
+      <li>${chebras.name}</li>
+    </ul>
+  </body>
 </html>
